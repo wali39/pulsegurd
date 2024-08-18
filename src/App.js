@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap"
+import { Container, Row, Col, Alert, Button } from "react-bootstrap"
 import NavigationBar from "./components/NavigationBar";
 import "./App.css";
 import ecgWave from "./assets/ecg.webp"
@@ -8,12 +8,13 @@ import ecgIcon from "./assets/heart_icon.png"
 import heartIcon from "./assets/heart_icon.png"
 import spo2Icon from "./assets/spo2.png"
 import Footer from "./components/Footer";
+import { CalendarDays, CalendarRange, UserRound, Users, UsersRound } from "lucide-react"
 import FormComponent from "./components/FormComponent";
 // import Display from "./components/Display";
 
 import ChartComponent from "./components/ChartComponent";
 // import Display from "./components/Display";
-const api_url = "http://localhost:8000/api/v1/sens";
+const api_url = "https://pulsegurd-api.onrender.com/api/v1/sens";
 
 function App() {
   const [patientdata, setPatientData] = useState([]);
@@ -85,7 +86,7 @@ function App() {
               <h1>
                 Welcome to PulseGuard
               </h1>
-              <p style={{textAlign:"justify"}}>Welcome to our advanced health monitoring site, where we provide you with real-time insights into your well-being. With our state-of-the-art tools, you can track vital signs like SpO2, heart rate, and ECG with precision and ease. Stay informed about your health, monitor changes, and make informed decisions to lead a healthier, happier life. Our comprehensive monitoring solutions empower you to take control of your health, ensuring peace of mind and well-being every step of the way.</p>
+              <p style={{ textAlign: "justify" }}>Welcome to our advanced health monitoring site, where we provide you with real-time insights into your well-being. With our state-of-the-art tools, you can track vital signs like SpO2, heart rate, and ECG with precision and ease. Stay informed about your health, monitor changes, and make informed decisions to lead a healthier, happier life. Our comprehensive monitoring solutions empower you to take control of your health, ensuring peace of mind and well-being every step of the way.</p>
             </div>
           </Col>
           <Col className="ecg" md="6">
@@ -123,17 +124,19 @@ function App() {
         <Row>
           <h3>All Records</h3>
           {patientdata.map((item, key) => (
-            < Alert variant="primary" key={key} >
-              <span>{item.name}</span>
-              <span>  timestamps: {new Date(item.createdAt).toLocaleString()}</span>
+            < Alert variant="primary" className="d-flex justify-content-between align-items-center" key={key} >
+              <div> <span style={{ fontSize: "18px" }}><UserRound size={20} style={{ marginTop: "-5px" }} /> Patient Name: {item.name} </span>
+                {/* <span style={{ width: "3px", height: "20px", display: "inline-block", background: "black", marginBottom: "-5px", marginLeft:"5px",marginRight:"5px" }} /> */}
+                <br />
+                <span> <CalendarRange size={20} style={{ marginTop: "-5px", color: "#3e3d3d" }} /> Date: {new Date(item.createdAt).toLocaleString()}</span>
+              </div>
               <span style={{
                 marginLeft: "20px", cursor: "pointer"
-              }} onClick={() => handleclick(item._id)} > See</span>
+              }} onClick={() => handleclick(item._id)} > <Button variant="info" href="#graph-section" >See</Button></span>
             </Alert>
           ))}
         </Row>
-        <Row>
-         
+        <Row id="graph-section">
           <ChartComponent datapoints={graphSingle} patient={singlePatient} />
         </Row>
 

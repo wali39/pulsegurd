@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts'; // Import CanvasJSReact from the installed package
+import { Alert, Badge } from 'react-bootstrap';
+import { Activity, HeartPulse } from 'lucide-react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
@@ -86,8 +88,12 @@ const ChartComponent = ({ datapoints, patient }) => {
 
   return (
     <div>
-      <p>Heart rate:{patient.heartbeat} bpm</p>
-      <p>Spo2: {patient.spo2}</p>
+
+      <Alert>
+        <h2 className='text-center'>Reports</h2>
+
+        <p style={{ fontSize: "20px" }}><HeartPulse size={20} /> Heart rate: <Badge bg='success'>{patient.heartbeat} bpm</Badge></p>
+        <p style={{ fontSize: "20px" }}> <Activity size={20} /> Spo2: <Badge bg='info'>{patient.spo2} </Badge></p></Alert>
       <CanvasJSChart options={options} />
     </div>
   );
