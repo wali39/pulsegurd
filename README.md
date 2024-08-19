@@ -64,7 +64,7 @@
 ![Product Name Screen Shot](https://res.cloudinary.com/dl1sztvng/image/upload/v1724050025/qvq3iodccdhswtqkkgft.png)
 ![Product Name Screen Shot](https://res.cloudinary.com/dl1sztvng/image/upload/v1724050025/tj1xbjyee6x1bthebybp.png)
 
-Pulsegurd is a IoT based health monitoring app. ECG, Heart Rate and Spo2 data collected from patient using sensors.Collected data store in db and showed it patients reports.
+Pulsegurd is a IoT based health monitoring app. ECG, Heart Rate and Spo2 data collected from patient using sensors.Collected data store in db and showed it in patients reports.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
